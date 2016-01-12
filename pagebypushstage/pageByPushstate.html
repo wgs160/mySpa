@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>age</th>
+        <th>sex</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>老王</td>
+        <td>19</td>
+        <td>男</td>
+    </tr>
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<script type="text/javascript" src="../jquery1.11.3.js"></script>
+<script>
+
+    var data = {
+        page1:{
+            name:"老王",
+            age:"19",
+            sex:"男"
+        },
+        page2:{
+            name:"老张",
+            age:"11",
+            sex:"男"
+        },
+        page3:{
+            name:"老四",
+            age:"12",
+            sex:"女"
+        }
+    };
+
+    window.onpopstate = function(event) {
+        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+        var state = event.state;
+        ajaxRequest(state.url,state.pageNum);
+    };
+
+    $(".pagination").on("click","a", function (event) {
+        event.preventDefault();
+        var pageNum = $(this).text();
+        var url = "";
+        history.pushState({url:url,pageNum:pageNum}, "title 1", "?page="+ pageNum);
+        ajaxRequest(url,pageNum);
+    });
+
+    function ajaxRequest(url,param){
+        var info = data["page"+param];
+        var html = "<tr><td>"+info.name+"</td><td>"+info.age+"</td><td>"+info.sex+"</td></tr>"
+        $("tbody").empty().append(html);
+    }
+
+
+
+
+</script>
+</body>
+</html>

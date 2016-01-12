@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .menu{
+        float: left;
+        width: 200px;
+    }
+    .container{
+        float: left;
+        width: 500px;
+        height: 500px;
+        background-color: #555;
+        color: #fff;
+    }
+</style>
+<body>
+<ul class="menu">
+    <li class="li"><a  href="#aa">aa</a></li>
+    <li class="li"><a  href="#bb">bb</a></li>
+    <li class="li"><a  href="#cc">cc</a></li>
+    <li class="li"><a  href="#dd">dd</a></li>
+</ul>
+<div class="container">
+    内容区
+</div>
+
+<!--<script>
+    window.onpopstate = function(event) {
+        alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    };
+</script>-->
+<script type="text/javascript" src="../jquery1.11.3.js"></script>
+<script type="text/javascript" src="spa.js"></script>
+</body>
+</html>

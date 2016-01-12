@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .menu{
+        float: left;
+        width: 200px;
+    }
+    .container{
+        float: left;
+        width: 500px;
+        height: 500px;
+        background-color: #555;
+        color: #fff;
+    }
+</style>
+<body>
+<ul class="menu">
+    <li class="li"><a data-pjax href="../tpl/aa.html">aa</a></li>
+    <li class="li"><a data-pjax href="../tpl/bb.html">bb</a></li>
+    <li class="li"><a data-pjax href="../tpl/cc.html">cc</a></li>
+    <li class="li"><a data-pjax href="../tpl/dd.html">dd</a></li>
+</ul>
+<div class="container">
+    内容区
+    <form data-pjax>
+        <input type="text"/>
+        <input type="submit"/>
+    </form>
+</div>
+
+<script type="text/javascript" src="../jquery1.11.3.js"></script>
+<script type="text/javascript" src="jquery.pjax.js"></script>
+<script>
+    $(document).pjax('a[data-pjax]', '.container');
+
+    $(document).on('submit', 'form[data-pjax]', function(event) {
+        $.pjax.submit(event,  '.container');
+    })
+</script>
+
+</body>
+</html>
