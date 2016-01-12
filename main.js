@@ -11,9 +11,6 @@ var oldWay = function () {
         var url = "tpl/"+$(this).attr("data-url")+".html";;
         ajaxRequest(url);
     });
-
-
-
 }
 
 var hashWay = function () {
